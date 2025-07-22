@@ -48,7 +48,7 @@ int main() {
     cout << "Виведення всіх елементів масиву: \n";
     printStudents(students, 5);
 
-    cout << "Виведення сортованих елементів масиву: \n";
+    cout << "Виведення сортованих елементів масиву в алфавітному порядку: \n";
     printStudents(sortStudents(students, 5), 5);
 
     return 0;
