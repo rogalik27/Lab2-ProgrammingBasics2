@@ -1,4 +1,4 @@
-#include <cstdint>
+#include <cstring>
 #include <iostream>
 
 using namespace std;
@@ -24,28 +24,14 @@ void printStudents(Student* students[], int studentAmount){
 }
 
 Student** sortStudents(Student* students[], int studentAmount){
-    cout << "Starting sorting\n";
     for(int i = 0; i < studentAmount-1; ++i){
-        cout << "i: " << i << "\n";
-        int a = 0;
         for(int j = i+1; j < studentAmount; ++j){
-            cout << "j: " << j << "\n";
-            cout << "i element: " << students[i]->familyName[a] << "\n";
-            cout << "j element: " << students[j]->familyName[a] << "\n";
-            while(students[i]->familyName[a] == students[j]->familyName[a]){
-                ++a;
-                cout << "Same letter!\n";
-            }
-            if (students[i]->familyName[a] > students[j]->familyName[a]){
-                Student* temp = students[i];
+            if (strcmp(students[i]->familyName, students[j]->familyName) > 0) {
+                Student* buffer = students[i];
                 students[i] = students[j];
-                students[j] = temp;
-                cout << "Swapped\n";
+                students[j] = buffer;
             }
-            
-        printStudents(students, 5);
         }
-    printStudents(students, 5);
     }
     return students;
 }
