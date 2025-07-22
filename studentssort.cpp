@@ -36,6 +36,19 @@ Student** sortStudents(Student* students[], int studentAmount){
     return students;
 }
 
+Student** findStudents(Student* students[], int studentAmount, int& foundCount){
+    Student** foundStudents = new Student*[studentAmount];
+    foundCount = 0;
+
+    for (int i = 0; i < studentAmount; ++i) {
+        if (students[i]->id % 2 == 0) {
+            foundStudents[foundCount++] = students[i];
+        }
+    }
+    cout << foundCount;
+    return foundStudents;
+}
+
 int main() {
     Student student1 = {24, "Mischa",  40, 50, 60, 70, 0, 0, 0, 0};
     Student student2 = {3, "Alex",  40, 50, 60, 70, 0, 0, 0, 0};
@@ -50,6 +63,11 @@ int main() {
 
     cout << "Виведення сортованих елементів масиву в алфавітному порядку: \n";
     printStudents(sortStudents(students, 5), 5);
+
+    cout << "Виведення сортованих елементів масиву в алфавітному порядку: \n";
+    int foundCount = 0;
+    Student** foundStudents = findStudents(students, 5, foundCount);
+    printStudents(foundStudents, foundCount);
 
     return 0;
 }
